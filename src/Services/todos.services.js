@@ -39,6 +39,17 @@ class TodoServices {
             throw(error)
         }
     }
+
+    static async updateThisTodo(id, body){
+        try {
+            const todo = await Todos.update(body,{
+                where: {id}
+            });
+            return todo
+        } catch (error) {
+            throw(error)
+        }
+    }
 }
 
 

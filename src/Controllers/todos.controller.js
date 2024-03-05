@@ -40,10 +40,23 @@ const findById = async (req,res) => {
     }
 }
 
+const updateTodo = async(req,res) => {
+    try {
+        const {id} = req.params;
+        const body = req.body;
+        const todo = await TodoServices.updateThisTodo(id, body);
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json(error)
+
+    }
+}
+
 
 module.exports = {
     findAllTodos,
     createNewTodo,
     deleteTodo,
-    findById
+    findById,
+    updateTodo
 }
